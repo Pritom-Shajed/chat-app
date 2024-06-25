@@ -1,4 +1,4 @@
 class AppFonts {
   AppFonts._();
-  static String roboto = 'Roboto';
+  static String nexa = 'Nexa';
 }

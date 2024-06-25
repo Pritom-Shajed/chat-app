@@ -1,4 +1,4 @@
-package com.example.dokan_app
+package com.example.chatapp
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -6,15 +6,20 @@ import 'package:flutter/material.dart';
 
   static Color baseColor = hexToColor('#222455');
   static Color baseFontColor = Colors.black;
-  static Color lightFontColor = Colors.black45;
-  static Color primaryColor = Colors.green;
+  static Color lightFontColor = hexToColor('#383C40');
+  static Color extraLightFontColor = hexToColor('#A4A9AF');
+  static Color primaryColor = hexToColor('#0013de');
   static Color lightScaffoldBackgroundColor = hexToColor('#F8F8F8');
   static Color darkScaffoldBackgroundColor = hexToColor('#2F2E2E');
   static Color secondaryAppColor = Colors.greenAccent;
   static Color secondaryDarkAppColor = hexToColor('#2F2E2E');
   static Color lightGray = hexToColor('#F6F6F6');
   static Color white = Colors.white;
-
+   static Color green = Colors.green;
+   static Color blue = Colors.blue;
+   static Color shadowColor = Colors.grey.withOpacity(.3);
+   static Color stokeColor = hexToColor('#D2DBE0');
+   static Color dividerColor = hexToColor('#D2DBE0');
 
   static Color skeletonColor1 = Colors.grey.shade200;
   static Color skeletonColor2 = Colors.grey.shade100;

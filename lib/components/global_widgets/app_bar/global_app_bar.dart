@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class GlobalAppBar {
-  static PreferredSizeWidget common({String? text, Color? color, VoidCallback? onTapBack}) => AppBar(
-    leading: AppButtons.iconButton(icon: Icons.arrow_back_ios, onTap: onTapBack ?? ()=> Get.back()),
-        title: text != null ? Text(text, style: TextStyle(fontSize: Dimensions.fontSize16),) : null,
+  static PreferredSizeWidget common({String? text, IconData? actionIcon, VoidCallback? onTapActionIcon, Color? bgColor, Color? textColor, Color? iconColor}) => AppBar(
+        title: text != null ? Text(text, style: TextStyle(fontSize: Dimensions.fontSize16, color: textColor ?? AppColors.baseFontColor),) : null,
         iconTheme: IconThemeData(
-          color: AppColors.white, //change your color here
+          color: iconColor ?? AppColors.baseColor, //change your color here
         ),
-        backgroundColor: AppColors.secondaryDarkAppColor,
+        actions: [
+          IconButton(onPressed: onTapActionIcon, icon: Icon(actionIcon))
+        ],
+        backgroundColor: bgColor ?? Colors.transparent,
       );
 }

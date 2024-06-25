@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:dokan_app/components/global_widgets/global_widgets.dart';
+import 'package:dokan_app/firebase_options.dart';
 import 'package:dokan_app/helper/helper.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -37,6 +39,7 @@ abstract class Initializer {
   static Future<void> _initServices() async {
     try {
 
+      await _initFirebase();
       await _initStorage();
       await _dependencyInjection();
 
@@ -44,6 +47,10 @@ abstract class Initializer {
     } catch (err) {
       rethrow;
     }
+  }
+
+  static Future<void> _initFirebase () async {
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   }
 
   static Future<void> _initStorage() async {
