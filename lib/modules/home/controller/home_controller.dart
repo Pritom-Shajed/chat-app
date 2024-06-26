@@ -34,17 +34,4 @@ class HomeController extends GetxController {
 
     return users;
   }
-
-  // Stream<List<Map<String, dynamic>>> getUsersStream (){
-  //   return _firestore.collection('Users').snapshots().map((snapshot) {
-  //     return snapshot.docs.map((doc){
-  //       //Going through each individual users
-  //       final user = doc.data();
-  //
-  //       return user;
-  //     }).toList();
-  //   });
-  //
-  // }
-
 }
