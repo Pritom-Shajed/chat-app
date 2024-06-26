@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:dokan_app/utils/constants/constants.dart';
+import 'package:chat_app/utils/constants/constants.dart';
 import 'package:http/http.dart' as http;
 import '../network.dart';
 

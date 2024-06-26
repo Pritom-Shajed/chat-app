@@ -1,7 +1,8 @@
-import 'package:dokan_app/helper/helper.dart';
+import 'package:chat_app/helper/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'routes/routes.dart';
 import 'utils/constants/constants.dart';
 import 'utils/styles/styles.dart';
@@ -19,14 +20,16 @@ class MyApp extends StatelessWidget {
         designSize: const Size(375, 893),
         minTextAdapt: true,
         splitScreenMode: true,
-        builder: (context, widget) => GetMaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: Strings.appName,
-              defaultTransition: Transition.cupertino,
-              theme: ThemeConfig.lightTheme,
-              initialRoute: AppPages.INITIAL,
-              getPages: AppPages.routes,
-            ));
+        builder: (context, widget) => GlobalLoaderOverlay(
+          child: GetMaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: Strings.appName,
+                defaultTransition: Transition.cupertino,
+                theme: ThemeConfig.lightTheme,
+                initialRoute: AppPages.INITIAL,
+                getPages: AppPages.routes,
+              ),
+        ));
   }
 }
 

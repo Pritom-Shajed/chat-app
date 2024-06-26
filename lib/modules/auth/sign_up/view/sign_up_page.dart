@@ -1,6 +1,6 @@
-import 'package:dokan_app/components/global_widgets/global_widgets.dart';
-import 'package:dokan_app/modules/auth/auth.dart';
-import 'package:dokan_app/routes/routes.dart';
+import 'package:chat_app/components/global_widgets/global_widgets.dart';
+import 'package:chat_app/modules/auth/auth.dart';
+import 'package:chat_app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

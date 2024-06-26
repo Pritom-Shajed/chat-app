@@ -1,4 +1,4 @@
-import 'package:dokan_app/routes/routes.dart';
+import 'package:chat_app/routes/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';

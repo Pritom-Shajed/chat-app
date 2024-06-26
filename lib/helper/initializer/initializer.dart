@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'package:dokan_app/components/global_widgets/global_widgets.dart';
-import 'package:dokan_app/firebase_options.dart';
-import 'package:dokan_app/helper/helper.dart';
+import 'package:chat_app/components/global_widgets/global_widgets.dart';
+import 'package:chat_app/firebase_options.dart';
+import 'package:chat_app/helper/helper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -9,7 +9,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:dokan_app/helper/dependencies/dependencies.dart' as dep;
+import 'package:chat_app/helper/dependencies/dependencies.dart' as dep;
 
 abstract class Initializer {
   static void init(VoidCallback runApp) {

@@ -63,6 +63,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '936897911961',
     projectId: 'chat-app-b9476',
     storageBucket: 'chat-app-b9476.appspot.com',
-    iosBundleId: 'com.example.dokanApp',
+    iosBundleId: 'com.example.chatapp',
   );
 }

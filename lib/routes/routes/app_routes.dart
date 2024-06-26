@@ -9,4 +9,7 @@ abstract class Routes {
 
   //HOME
   static const HOME = '/home';
+
+  //CHAT
+  static const CHAT = '/chat';
 }

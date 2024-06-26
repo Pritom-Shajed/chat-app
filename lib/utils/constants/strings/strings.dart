@@ -1,6 +1,6 @@
 abstract class Strings {
 
-  static const String appName = 'Dokan';
+  static const String appName = 'Chat App';
   static const String unknownError = 'Unknown Error! Try again after sometime.';
 
   static const String loading = "Loading, please wait";

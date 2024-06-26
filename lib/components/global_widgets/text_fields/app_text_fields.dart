@@ -1,12 +1,12 @@
-import 'package:dokan_app/components/global_widgets/global_widgets.dart';
-import 'package:dokan_app/utils/constants/constants.dart';
+import 'package:chat_app/components/global_widgets/global_widgets.dart';
+import 'package:chat_app/utils/constants/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 
 class AppTextFields {
   AppTextFields._();
 
-  static Widget textFieldHintOnly(BuildContext context,{ValueChanged<String?>? onChanged, bool obscureText = false, VoidCallback? onTapSuffixIcon,  String? suffixIconSvgPath, String? fontFamily, TextInputType? keyboardType, bool enabled = true, String? Function(String?)? validator, VoidCallback? onTapPrefixIcon, String? prefixIconSvgPath, required String hintText, TextEditingController? controller, int maxLine = 1,}) =>
+  static Widget textFieldHintOnly(BuildContext context,{ValueChanged<String?>? onChanged, FocusNode? focusNode, bool obscureText = false, VoidCallback? onTapSuffixIcon,  String? suffixIconSvgPath, String? fontFamily, TextInputType? keyboardType, bool enabled = true, String? Function(String?)? validator, VoidCallback? onTapPrefixIcon, String? prefixIconSvgPath, required String hintText, TextEditingController? controller, int maxLine = 1,}) =>
       Container(
         padding: REdgeInsets.all(6),
         decoration: BoxDecoration(
@@ -23,6 +23,7 @@ class AppTextFields {
             keyboardType: keyboardType,
             validator: validator,
             controller: controller,
+            focusNode: focusNode,
             style:  TextStyle(
                 fontFamily: fontFamily ?? AppFonts.nexa,
                 fontWeight: FontWeight.normal

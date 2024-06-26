@@ -1,7 +1,7 @@
-import 'package:dokan_app/components/global_widgets/global_widgets.dart';
-import 'package:dokan_app/components/global_widgets/text_fields/app_text_fields.dart';
-import 'package:dokan_app/utils/constants/constants.dart';
-import 'package:dokan_app/utils/constants/regex/app_regex.dart';
+import 'package:chat_app/components/global_widgets/global_widgets.dart';
+import 'package:chat_app/components/global_widgets/text_fields/app_text_fields.dart';
+import 'package:chat_app/utils/constants/constants.dart';
+import 'package:chat_app/utils/constants/regex/app_regex.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

@@ -1,4 +1,5 @@
-import 'package:dokan_app/network/network.dart';
+import 'package:chat_app/network/network.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -42,11 +43,20 @@ class SignUpController extends GetxController {
   //Firebase
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<ResponseModel> signUp() async {
     try {
-      await _auth.createUserWithEmailAndPassword(
+
+      //Crate user
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
           email: emailController.text.trim(), password: passController.text.trim());
+
+      //Save user in a separate doc
+      _firestore.collection("Users").doc(userCredential.user!.uid).set({
+        "uid": userCredential.user!.uid,
+        "email": emailController.text.trim(),
+      });
 
       return ResponseModel(true, "Success");
     } on FirebaseAuthException catch (e) {
