@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class ChatBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<ChatController>(()=> ChatController(), fenix: true);
+    Get.lazyPut<ChatController>(() => ChatController(), fenix: true);
   }
 
 }

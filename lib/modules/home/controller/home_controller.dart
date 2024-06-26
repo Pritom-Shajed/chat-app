@@ -25,16 +25,26 @@ class HomeController extends GetxController {
   // Firebase
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Stream<List<Map<String, dynamic>>> getUsersStream (){
-    return _firestore.collection('Users').snapshots().map((snapshot) {
-      return snapshot.docs.map((doc){
-        //Going through each individual users
-        final user = doc.data();
+  Future<List<Map<String, dynamic>>> getUsers() async {
+    final snapshot = await _firestore.collection('Users').get();
+    final users = snapshot.docs.map((doc) {
+      // Going through each individual user
+      return doc.data();
+    }).toList();
 
-        return user;
-      }).toList();
-    });
-
+    return users;
   }
+
+  // Stream<List<Map<String, dynamic>>> getUsersStream (){
+  //   return _firestore.collection('Users').snapshots().map((snapshot) {
+  //     return snapshot.docs.map((doc){
+  //       //Going through each individual users
+  //       final user = doc.data();
+  //
+  //       return user;
+  //     }).toList();
+  //   });
+  //
+  // }
 
 }

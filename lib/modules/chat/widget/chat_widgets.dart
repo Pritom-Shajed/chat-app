@@ -19,7 +19,14 @@ class ChatWidgets {
       //Loading
       if (snapshot.connectionState == ConnectionState.waiting) {
         return Center(
-          child: AppLoaders.foldingCube(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppLoaders.foldingCube(size: Dimensions.radius20),
+              16.verticalSpace,
+              AppTexts.smallText(text: 'Loading...')
+            ],
+          ),
         );
       }
 

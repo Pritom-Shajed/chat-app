@@ -59,7 +59,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyB9DIHZ0mfPmM7YAcZdcujE_TQoSqVOYe4',
-    appId: '1:936897911961:ios:a3a700e4022ea9bb64ac08',
+    appId: '1:936897911961:ios:ac9eb76c0385e30664ac08',
     messagingSenderId: '936897911961',
     projectId: 'chat-app-b9476',
     storageBucket: 'chat-app-b9476.appspot.com',

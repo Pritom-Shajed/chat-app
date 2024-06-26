@@ -23,7 +23,9 @@ class HomePage extends StatelessWidget {
           context.hideLoaderOverlay;
         });
       }),
-      body: HomeWidgets.userList(stream: controller.getUsersStream(), currentUserEmail: controller.getCurrentUser()?.email ?? ''),
+      body: HomeWidgets.userList(
+          future: controller.getUsers(),
+          currentUserEmail: controller.getCurrentUser()?.email ?? ''),
     );
   }
 }

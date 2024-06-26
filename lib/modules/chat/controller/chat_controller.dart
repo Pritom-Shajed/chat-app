@@ -13,30 +13,26 @@ class ChatController extends GetxController {
 
   late TextEditingController messageController;
 
-  late  ScrollController scrollController;
+  late ScrollController scrollController;
 
   final FocusNode focusNode = FocusNode();
 
   @override
   void onInit() async {
     messageController = TextEditingController();
-    scrollController  = ScrollController();
-    focusNode.addListener((){
-      if(focusNode.hasFocus){
+    scrollController = ScrollController();
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
         //cause a delay so that the keyboard has time to show up
         //then the amount of remaining space will be calculated
         //then scroll down
-        Future.delayed(const Duration(milliseconds: 500),
-              () => scrollDown(),
+        Future.delayed(
+          const Duration(milliseconds: 500),
+          () => scrollDown(),
         );
-
       }
     });
 
-    //wait a bit for listview to be built and then scroll to bottom
-    Future.delayed(const Duration(milliseconds: 500),
-          () => scrollDown(),
-    );
     super.onInit();
   }
 
@@ -48,15 +44,15 @@ class ChatController extends GetxController {
   }
 
   //Auto Scrolling Mechanism
-  void scrollDown  () {
+  void scrollDown() {
     scrollController.animateTo(scrollController.position.maxScrollExtent,
         duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
   }
 
   // Getting current user
 
-  User? getCurrentUser (){
-    return  _auth.currentUser;
+  User? getCurrentUser() {
+    return _auth.currentUser;
   }
 
   //Send Message
@@ -90,19 +86,20 @@ class ChatController extends GetxController {
             .add(newMessage.toJson());
         scrollDown();
         messageController.clear();
-      } catch (e){
+      } catch (e) {
         throw Exception(e.toString());
       }
-
     } else {
       AppToasts.shortToast(
         'Type anything to send',
       );
     }
-
   }
 
-  Stream<QuerySnapshot> getMessages(String userId, String otherUserId, ) {
+  Stream<QuerySnapshot> getMessages(
+    String userId,
+    String otherUserId,
+  ) {
     List<String> ids = [userId, otherUserId];
     ids.sort(); // This ensures the chatroomId is the same for any 2 person
 

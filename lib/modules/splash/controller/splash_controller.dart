@@ -11,7 +11,7 @@ class SplashController extends GetxController {
   void onReady() async {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 1500));
 
     if(_auth.currentUser != null){
       Get.offAllNamed(Routes.HOME);

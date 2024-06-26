@@ -1,12 +1,11 @@
 
+import 'package:chat_app/modules/home/home.dart';
 import 'package:get/get.dart';
-
-import '../home.dart';
 
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<HomeController>(HomeController(), permanent: true);
+    Get.lazyPut<HomeController>(() => HomeController(), fenix: true);
   }
 
 }

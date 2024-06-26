@@ -4,19 +4,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class ChatPage extends StatelessWidget {
-   ChatPage({super.key});
+class ChatPage extends StatefulWidget {
+  const ChatPage({super.key});
 
-  final controller = Get.find<ChatController>();
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
 
-  final receiverEmail = Get.parameters['receiverEmail'] ?? "";
+class _ChatPageState extends State<ChatPage> {
+  final _controller = Get.find<ChatController>();
 
-  final receiverId = Get.parameters['receiverId'] ?? "";
+  final _receiverEmail = Get.parameters['receiverEmail'] ?? "";
+
+  final _receiverId = Get.parameters['receiverId'] ?? "";
+
+  @override
+  void initState() {
+    //wait a bit for listview to be built and then scroll to bottom
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(
+        const Duration(milliseconds: 500),
+            () => _controller.scrollDown(),
+      );
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: GlobalAppBar.common(text: receiverEmail),
+        appBar: GlobalAppBar.common(text: _receiverEmail),
         body: Padding(
           padding: REdgeInsets.only(left: 16, right: 16, bottom: 24, top: 6),
           child: Column(
@@ -24,17 +41,25 @@ class ChatPage extends StatelessWidget {
               // Displaying message
               Expanded(
                   child: ChatWidgets.messageList(
-                    scrollController: controller.scrollController,
-                    currentUserId: controller.getCurrentUser()?.uid ?? '',
-                stream: controller.getMessages(
-                    receiverId, controller.getCurrentUser()?.uid ?? ''),
-              )),
+                    scrollController: _controller.scrollController,
+                    currentUserId: _controller
+                        .getCurrentUser()
+                        ?.uid ?? '',
+                    stream: _controller.getMessages(
+                        _receiverId, _controller
+                        .getCurrentUser()
+                        ?.uid ?? ''),
+                  )),
 
               //User Input
               ChatWidgets.userInput(context,
-                  focusNode: controller.focusNode,
-                  messageController: controller.messageController,
-                  onTap: () => controller.sendMessage(receiverId, controller.messageController.text.trim()))
+                  focusNode: _controller.focusNode,
+                  messageController: _controller.messageController,
+                  onTap: () =>
+                      _controller.sendMessage(
+                          _receiverId,
+                          _controller.messageController.text.trim())
+              )
             ],
           ),
         ));

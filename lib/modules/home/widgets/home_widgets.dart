@@ -3,14 +3,13 @@ import 'package:chat_app/modules/home/home.dart';
 import 'package:chat_app/routes/routes.dart';
 import 'package:chat_app/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class HomeWidgets {
   HomeWidgets._();
 
-  static Widget userList({required Stream<List<Map<String, dynamic>>> stream, required String currentUserEmail}) {
+  static Widget userList({required Future<List<Map<String, dynamic>>> future, required String currentUserEmail}) {
     return Padding(
       padding: REdgeInsets.all(16),
       child: Column(
@@ -20,8 +19,8 @@ class HomeWidgets {
           Divider(color: AppColors.dividerColor,height: 30.h,),
           12.verticalSpace,
           Expanded(
-            child: StreamBuilder(
-                stream: stream,
+            child: FutureBuilder(
+                future: future,
                 builder: (context, snapshot) {
                   //Error
                   if (snapshot.hasError) {
@@ -31,7 +30,14 @@ class HomeWidgets {
                   //Loading
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(
-                      child: AppLoaders.foldingCube(),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AppLoaders.foldingCube(size: Dimensions.radius20),
+                          16.verticalSpace,
+                          AppTexts.smallText(text: 'Loading...')
+                        ],
+                      ),
                     );
                   }
 
