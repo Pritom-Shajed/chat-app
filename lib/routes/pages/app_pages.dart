@@ -39,7 +39,7 @@ abstract class AppPages {
     //CHAT
     GetPage(
         name: Routes.CHAT,
-        page: () => ChatPage(),
+        page: () => const ChatPage(),
         binding: ChatBinding()
     ),
 
