@@ -13,44 +13,19 @@ class ChatController extends GetxController {
 
   late TextEditingController messageController;
 
-  late ScrollController scrollController;
-
-  final FocusNode focusNode = FocusNode();
-
   @override
   void onInit() async {
     messageController = TextEditingController();
-    scrollController = ScrollController();
-    focusNode.addListener(() {
-      if (focusNode.hasFocus) {
-        //cause a delay so that the keyboard has time to show up
-        //then the amount of remaining space will be calculated
-        //then scroll down
-        Future.delayed(
-          const Duration(milliseconds: 500),
-          () => scrollDown(),
-        );
-      }
-    });
-
     super.onInit();
   }
 
   @override
   void onClose() {
     messageController.dispose();
-    scrollController.dispose();
     super.onClose();
   }
 
-  //Auto Scrolling Mechanism
-  void scrollDown() {
-    scrollController.animateTo(scrollController.position.maxScrollExtent,
-        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
-  }
-
   // Getting current user
-
   User? getCurrentUser() {
     return _auth.currentUser;
   }
@@ -84,10 +59,9 @@ class ChatController extends GetxController {
             .doc(chatRoomId)
             .collection('messages')
             .add(newMessage.toJson());
-        scrollDown();
         messageController.clear();
       } catch (e) {
-        throw Exception(e.toString());
+        // throw Exception(e.toString());
       }
     } else {
       AppToasts.shortToast(
@@ -110,7 +84,7 @@ class ChatController extends GetxController {
         .collection(('chat_rooms'))
         .doc(chatRoomId)
         .collection('messages')
-        .orderBy("timestamp", descending: false)
+        .orderBy("timestamp", descending: true)
         .snapshots();
   }
 }

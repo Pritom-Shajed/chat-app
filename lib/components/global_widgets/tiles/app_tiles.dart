@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppTiles {
   AppTiles._();
 
-  static Widget userTile ({required String text, VoidCallback? onTap}){
+  static Widget userTile ({String? title, required String subtitle, VoidCallback? onTap}){
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -26,9 +26,16 @@ class AppTiles {
         ),
         child: Row(
           children: [
-            const Icon(Icons.person),
+            AppIconWidgets.iconDataIcon(icon: Icons.person),
             8.horizontalSpace,
-            Expanded(child: AppTexts.mediumText(text: text)),
+            Expanded(child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                title == null ? const SizedBox.shrink() : AppTexts.mediumText(text: title),
+                title == null ? 0.verticalSpace : 8.verticalSpace,
+                AppTexts.smallText(text: subtitle, color: title == null ? AppColors.baseColor : AppColors.lightFontColor),
+              ],
+            )),
             8.horizontalSpace,
             const Icon(Icons.arrow_forward_ios),
 

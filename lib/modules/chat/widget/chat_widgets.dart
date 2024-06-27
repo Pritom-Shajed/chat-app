@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ChatWidgets {
   ChatWidgets._();
 
-  static Widget messageList ({required Stream<QuerySnapshot> stream, required String currentUserId, required ScrollController scrollController}){
+  static Widget messageList ({required Stream<QuerySnapshot> stream, required String currentUserId, ScrollController? scrollController}){
     return StreamBuilder(stream: stream, builder: (context, snapshot){
       //Error
       if (snapshot.hasError) {
@@ -40,6 +40,7 @@ class ChatWidgets {
 
       //return list
       return ListView(
+        reverse: true,
         physics: const BouncingScrollPhysics(),
         controller: scrollController,
         children: snapshot.data!.docs

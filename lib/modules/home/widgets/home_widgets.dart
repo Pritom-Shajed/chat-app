@@ -67,9 +67,10 @@ Widget _userListItem(Map<String, dynamic> userData, String currentUserEmail) {
 
   if(userInfo.email !=  currentUserEmail){
     return AppTiles.userTile(
-        text: userInfo.email,
+        title: userInfo.name,
+        subtitle: userInfo.email,
         onTap: () => Get.toNamed(Routes.CHAT,
-            parameters: {"receiverEmail": userInfo.email, "receiverId": userInfo.uid}));
+            parameters: {"receiverEmail": userInfo.email, "receiverId": userInfo.uid, "receiverName": userInfo.name ?? ''}));
   } else {
     return const SizedBox.shrink();
   }

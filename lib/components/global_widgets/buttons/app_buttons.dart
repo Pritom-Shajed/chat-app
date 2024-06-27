@@ -9,20 +9,21 @@ class AppButtons {
 
   static Widget iconButton(
       {Key? key,
-      double? size,
+      double? iconSize,
+      double? avatarSize,
       VoidCallback? onTap,
       required IconData icon,
       Color? color}) {
     return CircleAvatar(
       backgroundColor: AppColors.baseColor,
-        radius: Dimensions.radius24,
+        radius: avatarSize ?? Dimensions.radius24,
         child: IconButton(
             key: key,
             onPressed: onTap,
             icon: Icon(
               icon,
               color: color ?? AppColors.white,
-              size: size ?? 22.h,
+              size: iconSize ?? 22.h,
             )));
   }
 

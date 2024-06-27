@@ -20,6 +20,7 @@ class SignUpController extends GetxController {
   late RoundedLoadingButtonController buttonController;
   late TextEditingController emailController;
   late TextEditingController passController;
+  late TextEditingController nameController;
 
   //Key
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -29,6 +30,7 @@ class SignUpController extends GetxController {
     buttonController = RoundedLoadingButtonController();
     emailController = TextEditingController();
     passController = TextEditingController();
+    nameController = TextEditingController();
     super.onInit();
   }
 
@@ -37,6 +39,7 @@ class SignUpController extends GetxController {
     buttonController.reset();
     emailController.dispose();
     passController.dispose();
+    nameController.dispose();
     super.onClose();
   }
 
@@ -55,6 +58,7 @@ class SignUpController extends GetxController {
       //Save user in a separate doc
       _firestore.collection("Users").doc(userCredential.user!.uid).set({
         "uid": userCredential.user!.uid,
+        "name": nameController.text.trim(),
         "email": emailController.text.trim(),
       });
 

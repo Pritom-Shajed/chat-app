@@ -14,7 +14,7 @@ class AuthWidgets {
   static Widget header ({bool isSignIn = true}){
     return Column(
       children: [
-        AppIconWidgets.pngAssetIcon(iconPath: AppPngIcons.appLogo, size: Get.width * 0.2),
+        AppIconWidgets.pngAssetIcon(iconPath: AppPngIcons.appLogo, size: Get.width * 0.5),
 
         24.verticalSpace,
 
@@ -26,10 +26,24 @@ class AuthWidgets {
   static Widget body(BuildContext context,
       {TextEditingController? emailController,
       TextEditingController? passController,
+      TextEditingController? nameController,
       bool isPassVisible = false,
+        bool isSignIn = true,
       VoidCallback? onTapPassVisibility}) {
     return Column(
       children: [
+        isSignIn ? const SizedBox.shrink() : AppTextFields.textFieldHintOnly(
+          context,
+          hintText: 'Name',
+          controller: nameController,
+          validator: (name){
+            if(name == null || name.isEmpty){
+              return Strings.emptyTextField;
+            }
+            return null;
+          },
+        ),
+        isSignIn ? 0.verticalSpace : 16.verticalSpace,
         AppTextFields.textFieldHintOnly(
           context,
           hintText: 'Email',

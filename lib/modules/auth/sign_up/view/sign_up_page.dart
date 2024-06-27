@@ -26,6 +26,8 @@ class SignUpPage extends StatelessWidget {
                   AuthWidgets.header(isSignIn: false),
                   52.verticalSpace,
                   Obx(() => AuthWidgets.body(context,
+                      isSignIn: false,
+                      nameController: controller.nameController,
                       emailController: controller.emailController,
                       passController: controller.passController,
                       onTapPassVisibility: controller.toggleIsPassVisible,
@@ -57,7 +59,7 @@ class SignUpPage extends StatelessWidget {
                           controller.buttonController.reset();
                         }
                       },
-                  onTapSignIn: () => Get.back()
+                      onTapSignIn: () => Get.back()
                   ),
                 ],
               ),

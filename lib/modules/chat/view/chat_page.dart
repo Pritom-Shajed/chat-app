@@ -16,24 +16,15 @@ class _ChatPageState extends State<ChatPage> {
 
   final _receiverEmail = Get.parameters['receiverEmail'] ?? "";
 
+  final _receiverName = Get.parameters['receiverName'] ?? "";
+
   final _receiverId = Get.parameters['receiverId'] ?? "";
 
-  @override
-  void initState() {
-    //wait a bit for listview to be built and then scroll to bottom
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(
-        const Duration(milliseconds: 500),
-            () => _controller.scrollDown(),
-      );
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: GlobalAppBar.common(text: _receiverEmail),
+        appBar: GlobalAppBar.common(text: _receiverName.isNotEmpty ? _receiverName : _receiverEmail),
         body: Padding(
           padding: REdgeInsets.only(left: 16, right: 16, bottom: 24, top: 6),
           child: Column(
@@ -41,7 +32,6 @@ class _ChatPageState extends State<ChatPage> {
               // Displaying message
               Expanded(
                   child: ChatWidgets.messageList(
-                    scrollController: _controller.scrollController,
                     currentUserId: _controller
                         .getCurrentUser()
                         ?.uid ?? '',
@@ -53,7 +43,6 @@ class _ChatPageState extends State<ChatPage> {
 
               //User Input
               ChatWidgets.userInput(context,
-                  focusNode: _controller.focusNode,
                   messageController: _controller.messageController,
                   onTap: () =>
                       _controller.sendMessage(
